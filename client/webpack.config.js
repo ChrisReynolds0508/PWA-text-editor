@@ -19,25 +19,27 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'PWA Text Editor'
+        title: 'JATE'
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
-        name: 'PWA Text Editor',
-        short_name: 'TextEditor',
-        description: 'A simple text editor PWA',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
-        start_url: './',
-        publicPath: './',
+        fingerprints: false,
+        inject: true,
+        name: "Just Another Text Editor",
+        short_name: "JATE",
+        description: "Text Editor with offline capabilities using IndexedDB",
+        background_color: "#225ca3",
+        theme_color: "#225ca3",
+        start_url: "/",
+        publicPath: "/",
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('assets', 'icons'),
+            src: path.resolve("src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+            destination: path.join("assets", "icons"),
           },
         ],
       }),
